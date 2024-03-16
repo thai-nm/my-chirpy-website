@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,24 +30,6 @@ jobs:
             \-\-disable-external=true \
             \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
-      - name: Upload site artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: site-artifact
-          path: _site
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download site artifact
-        uses: actions/download-artifact@v4
-        with:
-          path: /tmp
-
-      - name: Display structure of downloaded files
-        run: ls -R /tmp
-
       - uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: "${{ secrets.MY_CHIRPY_WEBSITE_GCP_SA }}"
@@ -55,6 +37,6 @@ jobs:
       - name: Upload artifact to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@v2
         with:
-          path: site-artifact
+          path: _site
           destination: www.thainm.site
           parent: false
