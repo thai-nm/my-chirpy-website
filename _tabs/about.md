@@ -36,7 +36,7 @@ Hi guys! I'm a computer guy trying my best to discover the technology world, and
 #### 💻 Programming languages: 
 
 <div>
-	<img width="85%" align='left'  src="https://github-readme-stats.vercel.app/api?username=thai-nm&show_icons=true&theme=gruvbox&count_private=true" />
-	<img width="100%" height='200px' align='right'  src="https://github-readme-stats.vercel.app/api/top-langs/?username=thai-nm&layout=compact&theme=gruvbox&count_private=true&show_icon=true" />
+	<img width="85%" align='left' alt="github-stats"  src="https://github-readme-stats.vercel.app/api?username=thai-nm&show_icons=true&theme=gruvbox&count_private=true" />
+	<img width="100%" height='200px' align='right' alt="github-top-used-langs"  src="https://github-readme-stats.vercel.app/api/top-langs/?username=thai-nm&layout=compact&theme=gruvbox&count_private=true&show_icon=true" />
 </div>
 
