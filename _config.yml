@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 lang: en
 timezone: Asia/Saigon
 
-title: Orchestration Station
+title: Ops Station
 tagline: A personal blog of a DevOps/SRE/Cloud Engineer.
 description: >-
   A personal blog about DevOps, Site Reliability Engineering and Cloud.
@@ -28,12 +28,11 @@ social:
 
 # Need to update this
 google_site_verification: "mysiteverificationstring"
-
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id:
 
 goatcounter:
-  id: # fill in your Goatcounter ID
+  id:
 
 theme_mode: dark
 
@@ -45,7 +44,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/images/avatar.png
+avatar: assets/img/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -55,17 +54,20 @@ social_preview_image: # string, local or CORS resources
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
+  active: giscus
+
+  # disqus options
   disqus:
-    shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
+    shortname:
+
+  # utterances options
   utterances:
     repo: # <gh-username>/<repo>
     issue_term: # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
+
+  # Giscus options
   giscus:
-    repo: # <gh-username>/<repo>
+    repo: thai-nm/my-chirpy-website
     repo_id:
     category:
     category_id:
