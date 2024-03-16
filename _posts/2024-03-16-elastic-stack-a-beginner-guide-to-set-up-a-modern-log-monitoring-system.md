@@ -7,9 +7,20 @@ tags: [elastic, fundamental, observability, sre]
 ---
 
 ## Introduction
-- Talk about the need to use a log monitoring system
-- Talk about the target audience of this blog
-- Talk about what will be achieved at the end of this blog
+
+Running application generates a huge amount of logs. From the logs, we can say that the application is functioning well if most of them are information logs, or failing if they are stacktraces/errors. 
+
+**Scenario:**
+
+Let's say, a bank application user is trying to login to pay for a cup of coffee :) Every time she tried, it only shows "Login failed. Please try again!", even if her credentials are perfect. Not only this frustrates the user, but also the bank application administrators (usually, it's us, SRE team). After getting reports from users, the SRE team started to check the application backend and after several hours checking running services, they found the access control service returned so many of errors. They connected with stakeholders, and worked together to resolve the issue. Everything backed to normal. The users are now happy again.
+
+But here's the thing: The SRE team had to go through all the services running in the Kubernetes cluster to find out that the access control service was malfunctioning. It did not stop and exited, but kept retrying indefinitely. If there's a tool which helps to centralizely store and visualize the logs from running services, the SRE team could take the rest much earlier.
+
+**Solution:**
+
+Here **Elastic** stack comes to rescue. The **Elastic** stack can be a good solution for the case as it is designed to store logs effectively and bring intuitive dashboards for log visualization.
+
+This blog should be easy to understand for any level, and intends to share about its benefits, how it can be deployed, and the pros and cons of the stack. 
 
 ## Architecture overview
 - Prepare an overview to the audience about:
