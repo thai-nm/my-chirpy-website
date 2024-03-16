@@ -42,6 +42,11 @@ jobs:
     steps:
       - name: Download site artifact
         uses: actions/download-artifact@v4
+        with:
+          path: /tmp/download
+
+      - name: Display structure of downloaded files
+        run: ls -R /tmp/download
 
       - uses: 'google-github-actions/auth@v2'
         with:
