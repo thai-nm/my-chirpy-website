@@ -37,6 +37,7 @@ Readers should be familiar with the following knowledge:
 
 ## Architecture overview
 
+### Overview
 Cluster overview:
 <figure>
   <img
@@ -51,11 +52,24 @@ Elastic stack overview:
   alt="cluster-architecture">
 </figure>
 
-## Environment setup
-
-Use `kind`.
+### Introduction to Elastic stack components
+- Fluent Bit
+- Logstash
+- Elastic Search
+- Kibana
 
 ## Laboratory
+
+### Environment setup
+
+Download `kind` [config file](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kind.yaml) in the blog resource repository as `kind.yaml` and use it to create the desired cluster.
+
+```bash
+kind create cluster --config=kind.yaml
+```
+After running this command, you will have a Kubernetes cluster with 2 nodes running as 2 Docker containers.
+
+### Set up Elasticsearch
 - Set up environment
 - Set up ElasticSearch cluster
 - Set up Kibana
@@ -68,6 +82,8 @@ Use `kind`.
 - Futher enhancement
 - Why this architecture?
 - Why not Elastic official Helm chart?
+
+## Terminate lab resources
 
 ## Conclusion
 - Here is the conclusion of the Elastic stack.
