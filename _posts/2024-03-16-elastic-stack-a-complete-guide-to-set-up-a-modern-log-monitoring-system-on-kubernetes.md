@@ -1,5 +1,5 @@
 ---
-title: "Elastic stack: A beginner guide to set up a modern log monitoring system"
+title: "Elastic stack: A complete guide to set up a modern log monitoring system on Kubernetes"
 author: thainm
 date: 2024-03-16 00:00:00 +0700
 categories: [Observability, Elastic stack]
@@ -20,30 +20,40 @@ But here's the thing: The SRE team had to go through all the services running in
 
 Here **Elastic** stack comes to rescue. The **Elastic** stack can be a good solution for the case as it is designed to store logs effectively and bring intuitive dashboards for log visualization.
 
-This blog should be easy to understand for any level, and intends to share about its benefits, how it can be deployed, and the pros and cons of the stack. 
+This blog is a self-study lab, intends to share about Elastic stack's benefits, how it can be deployed, and the pros and cons of the stack. 
 
-## Architecture overview
-
-### Knowledge pre-requisite
-Readers should be familiar with the following knowledge:
-- Kubernetes concepts
-- Helm
-- Linux
-- (Optional) SSL/TLS
-
-### Environment and tools pre-requisite
-The lab is performed under Linux environment.
+## Pre-requisite
+The lab is performed under Linux environment using `kind` to create a local Kubernetes cluster with 2 nodes: 1 master and 1 worker. Each node has 2GB of storage so make sure your local machine has enough capabity. The following tools are required for this lab:
 - kubectl
 - kind
 - Docker Engine
 
-### Environment overview
+Readers should be familiar with the following knowledge:
+- Docker concepts: Fundamental
+- Kubernetes concepts: Intermediate
+- Helm: Fundamental
+- Linux: Intermediate
+- (Optional) SSL/TLS: Intermediate
 
+## Architecture overview
 
-- Prepare an overview to the audience about:
-  - Lab environment
-  - Stack components
-  - Knowledge pre-requisite
+Cluster overview:
+<figure>
+  <img
+  src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/cluster-architecture.png" 
+  alt="cluster-architecture">
+</figure>
+
+Elastic stack overview:
+<figure>
+  <img
+  src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/elastic-stack-architecture.png" 
+  alt="cluster-architecture">
+</figure>
+
+## Environment setup
+
+Use `kind`.
 
 ## Laboratory
 - Set up environment
