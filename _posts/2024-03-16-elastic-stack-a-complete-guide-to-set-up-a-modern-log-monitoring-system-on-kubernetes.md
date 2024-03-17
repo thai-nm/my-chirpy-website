@@ -6,6 +6,13 @@ categories: [Observability, Elastic stack]
 tags: [elastic, fundamental, observability, sre]
 ---
 
+<style>
+figcaption {
+  color: #fff;
+  text-align: center;
+}
+</style>
+
 ## Introduction
 
 Running application generates a huge amount of logs. From the logs, we can say that the application is functioning well if most of them are information logs, or failing if they are stacktraces/errors. 
@@ -43,26 +50,29 @@ Cluster overview:
   <img
   src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/cluster-architecture.png" 
   alt="cluster-architecture">
-</figure>
-
-Elastic stack overview:
-<figure>
-  <img
-  src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/elastic-stack-architecture.png" 
-  alt="cluster-architecture">
+  <figcaption>Cluster architecture overview</figcaption>
 </figure>
 
 ### Introduction to Elastic stack components
-- Fluent Bit
-- Logstash
-- Elastic Search
-- Kibana
+<figure>
+  <img
+  src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/elastic-stack-architecture.png" 
+  alt="elastic-search-architecture">
+  <figcaption>Elastic stack workflow</figcaption>
+</figure>
+
+
+- [Fluent Bit](https://docs.fluentbit.io/manual): A lightweight yet performance telemetry agent. In our architecture, Fluent Bit acts as a log collector and is deployed on every node to gather logs from running containers.
+- [Logstash](https://www.elastic.co/guide/en/logstash/current/introduction.html): A data collector that accepts input from a variety of sources, and a powerful data processing pipeline with multiple filter plugins. In our architecture, Logstash accepts raw log output from Fluent Bit, transform the log into a structured format and then publish to Elasticsearch.
+- [Elastic Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html): The heart of the Elastic stack. Elasticsearch is used to centralize, index, manage all the log and their lifecycles. By providing APIs, Elasticsearch allows developers to interact, search, and analyse the logs.
+- [Kibana](https://www.elastic.co/guide/en/kibana/current/index.html): Not everyone loves to interact via APIs. In our architecture, Kibana provides a central place for anyone who needs access to Elasticsearch along with intuitive dashboards and customization options. 
 
 ## Laboratory
 
-### Environment setup
+### Cluster setup
+Every code or file in this blog is stored in [the blog resource repository](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/).
 
-Download `kind` [config file](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kind.yaml) in the blog resource repository as `kind.yaml` and use it to create the desired cluster.
+Download and use the `kind` [config file](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kind.yaml) in the blog resource repository to create the desired cluster.
 
 ```bash
 kind create cluster --config=kind.yaml
@@ -70,7 +80,6 @@ kind create cluster --config=kind.yaml
 After running this command, you will have a Kubernetes cluster with 2 nodes running as 2 Docker containers.
 
 ### Set up Elasticsearch
-- Set up environment
 - Set up ElasticSearch cluster
 - Set up Kibana
 - Set up Fluent Bit
@@ -80,8 +89,10 @@ After running this command, you will have a Kubernetes cluster with 2 nodes runn
 - About pros
 - About cons
 - Futher enhancement
-- Why this architecture?
-- Why not Elastic official Helm chart?
+- Q&A
+  - Why this architecture?
+  - Why don't we use only Fluent Bit?
+  - Why not Elastic official Helm chart?
 
 ## Terminate lab resources
 
