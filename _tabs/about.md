@@ -4,34 +4,31 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-### Hi guys 👋 
-### I'm Thai, from Vietnam with love :D
+
 
 [![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/thainm-uet)
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/thainm-uet)
 [![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:thainm.uet@gmail.com)
 [![Personal Blog](https://img.shields.io/badge/Personal%20Blog-purple)](https://thainm.site)
 
-Hi guys! I'm a computer guy trying my best to discover the technology world, and my target is to become an admirable and knowledgeable DevOps Engineer!
+Hi guys 👋
 
-<img align="right" alt="img" src="assets/img/its-devops.png" width="500px" height="300px" />
+I'm a computer guy trying my best to discover the technology world, with the target is to become a friendly, admirable, and knowledgeable Cloud DevOps Engineer!
+
+<img align="right" alt="img" src="assets/img/its-devops.png" width="800px" height="300px" />
 
 
-#### 🌱 Things I am currently working on: 
-- Finding who I am!!
-- Work so hard as a DevOps Engineer in FPT Software
-- Develop simple tools to simplify my work life and contribute to open-source projects!
-- Discover new hobbies: philosophy, psychology, films, games, baseball, football, and magician!
+### About this blog
+This blog intends to share practical technical guidences from my real-world experience as a Cloud/DevOps/SRE Engineer, mostly about designing, setting up and managing reliable and highly scalable systems, as well as DevOps spirit of application development support.
 
-#### 💪 Things I am challenging myself with:
-- Form a book-reading habit
-- Understand more about finance, money, and investment
-- Develop a blog website for myself
-- Get some DevOps-related certificates: Certified Kubernetes Administrator (Gotcha!), GCP Cloud Associate Engineer (And I got this as well!)
+Althought this area requires a wide range of knowledge domain, the contents should be easy to understand for every level. If not, please comment below each post or contact me directly :)
+
+I appreciate every view of this blog. Thank you and happy operating! 
+
 
 #### 🧰 My favorite tools and services: 
 
-[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,kubernetes,docker,linux,prometheus,ansible,jenkins,githubactions,gitlab,nginx,django,python,golang,bash&perline=8)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,kubernetes,docker,linux,prometheus,ansible,jenkins,githubactions,gitlab,nginx,django,python,golang,bash&perline=16)](https://skillicons.dev)
 
 #### 💻 Programming languages: 
 

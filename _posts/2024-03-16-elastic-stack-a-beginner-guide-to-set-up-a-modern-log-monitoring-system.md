@@ -23,12 +23,30 @@ Here **Elastic** stack comes to rescue. The **Elastic** stack can be a good solu
 This blog should be easy to understand for any level, and intends to share about its benefits, how it can be deployed, and the pros and cons of the stack. 
 
 ## Architecture overview
+
+### Knowledge pre-requisite
+Readers should be familiar with the following knowledge:
+- Kubernetes concepts
+- Helm
+- Linux
+- (Optional) SSL/TLS
+
+### Environment and tools pre-requisite
+The lab is performed under Linux environment.
+- kubectl
+- kind
+- Docker Engine
+
+### Environment overview
+
+
 - Prepare an overview to the audience about:
   - Lab environment
   - Stack components
   - Knowledge pre-requisite
 
 ## Laboratory
+- Set up environment
 - Set up ElasticSearch cluster
 - Set up Kibana
 - Set up Fluent Bit
