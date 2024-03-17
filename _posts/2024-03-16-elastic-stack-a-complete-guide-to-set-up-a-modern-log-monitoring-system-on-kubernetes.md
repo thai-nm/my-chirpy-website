@@ -31,9 +31,10 @@ This blog is a self-study lab, intends to share about Elastic stack's benefits, 
 
 ## Pre-requisite
 The lab is performed under Linux environment using `kind` to create a local Kubernetes cluster with 2 nodes: 1 master and 1 worker. Each node has 2GB of storage so make sure your local machine has enough capabity. The following tools are required for this lab:
-- kubectl
-- kind
-- Docker Engine
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+- [helm](https://helm.sh/docs/)
+- [Docker Engine](https://docs.docker.com/engine/install/)
 
 Readers should be familiar with the following knowledge:
 - Docker concepts: Fundamental
@@ -72,17 +73,40 @@ Cluster overview:
 ### Cluster setup
 Every code or file in this blog is stored in [the blog resource repository](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/).
 
-Download and use the `kind` [config file](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kind.yaml) in the blog resource repository to create the desired cluster.
+Download and use the [kind.yaml file](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kind.yaml) in the blog resource repository to create the desired cluster.
 
 ```bash
+# Create lab cluster
 kind create cluster --config=kind.yaml
+
+# Update kubectl to access lab cluster
+kubectl cluster-info --context kind-elastic-stack-lab
 ```
-After running this command, you will have a Kubernetes cluster with 2 nodes running as 2 Docker containers.
+After running this command, you will have a Kubernetes cluster with 2 nodes running as 2 Docker containers. Let's run this command to check if everything goes well until now:
+
+```bash
+kubectl get pod -A
+```
+
+The output should look similar to this:
+<figure>
+  <img
+  src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/cluster-status-output.png" 
+  alt="elastic-search-architecture">
+  <figcaption>Cluster status</figcaption>
+</figure>
+
 
 ### Set up Elasticsearch
 - Set up ElasticSearch cluster
+
+### Set up Kibana
 - Set up Kibana
+
+### Set up Fluent Bit
 - Set up Fluent Bit
+
+### Set up Logstash
 - Set up Logstash
 
 ## Analysis: Pros and Cons
