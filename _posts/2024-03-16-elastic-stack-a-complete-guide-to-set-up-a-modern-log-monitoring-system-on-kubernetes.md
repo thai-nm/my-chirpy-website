@@ -80,13 +80,16 @@ Every code or file in this blog is stored in [the blog resource repository](http
   kubectl cluster-info --context kind-elastic-stack-lab
   ```
 
-- After running this command, you will have a Kubernetes cluster with 2 nodes running as 2 Docker containers. Let's run this command to check if everything goes well until now:
+- You should have a Kubernetes cluster with 2 nodes running as 2 Docker containers now. Let's run this command to check and create `observability` namespace for our resources:
   ```bash
   # Check status of pods in every namespace
   kubectl get pod -A
 
   # Check status of cluster nodes
   kubectl get node
+
+  # Create `observability` namespace
+  kubectl create namespace observability
   ```
 
   The output should look similar to this:
@@ -111,19 +114,13 @@ Every code or file in this blog is stored in [the blog resource repository](http
 Now we're good to go, let's start provisioning!
 
 ### Set up Elasticsearch
-Chart information:
-  - [Source repository](https://github.com/bitnami/charts/tree/main/bitnami/elasticsearch)
-  - [ArtifactHub](https://artifacthub.io/packages/helm/bitnami/elasticsearch)
-
-By default, this chart will install `Elasticsearch` as a `StatefulSet` object. This `StatefulSet` will control 4 types of [Elasticsearch node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html):
+By default, this chart will install `Elasticsearch` as a `StatefulSet` object. This `StatefulSet` will control 4 types of [Elasticsearch node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html), with each node is represented by a `Pod`:
   - Master node
   - Ingest node
   - Data node
   - Coordinating node
 
-Elasticsearch node is represented by `Pod`s, and each pod will be associated with a **8Gi** `PersistentVolumeClaim`.
-
-We can install Elasticsearch using chart's default values. In fact, the default values of this chart is nearly what we want in practical to ensure our Elasticsearch cluster is highly avalable and secured, but we still need to overide some values to fit our resource capacity. The `values-elasticsearch.yaml` here can be a good start for our use case, as well as for development/staging environments in practical:
+We can install Elasticsearch using chart's default values. But we still need to overide some values to fit our demo purpose. The [values-elasticsearch.yaml](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/values-elasticsearch.yaml) file can be a good start for our use case, as well as for development/staging environments in practical:
 ```yaml
 ---
 security:
@@ -143,21 +140,21 @@ master:                                 # [5]
     limits:
       cpu: 2
       memory: 1024Mi
-data:
-  replicaCount: 2                       # [10]
+data:                                   # [6]
+  replicaCount: 2
   persistence:
     size: 5Gi
   resources:
     requests:
-      cpu: 1                            # [11]
-      memory: 256Mi                     # [12]
+      cpu: 1
+      memory: 256Mi
     limits:
-      cpu: 2                            # [13]
-      memory: 1024Mi                    # [14]
+      cpu: 2
+      memory: 1024Mi
 ingest:
-  enabled: false                        # [15]
+  enabled: false                        # [7]
 coordinating:
-  enabled: false                        # [16]
+  replicaCount: 1                       # [8]
 ```
 
 Let's explain those options:
@@ -166,13 +163,56 @@ Let's explain those options:
   ```bash
   kubectl create secret generic elasticsearch-admin --from-literal=elasticsearch-password=elasticadmin
   ```
-  3. Enable auto generation of TLS certificates which are required for Elasticsearch node communication. The TLS certificates will be created and distributed to nodes managed by this chart automatically.
-  4. Disable TLS encryption for REST requests from clients to our Elasticseach server. Because all of the client components in this lab such as Logstash and Kibana are installed within the same cluster with the Elasticsearch server, the communication between them and Elasticsearch can be HTTP. For other use cases, such as client applications communicate with the Elasticsearch server over the Internet, TLS encryption must be required.
-  5. These are options for the `master` node. We will install one `master` node with 5Gi of storage only for the demo purpose. Other options are Kubernetes resource request and limitation.
-  6. 
+  1. Enable auto generation of TLS certificates which are required for Elasticsearch node communication. The TLS certificates will be created and distributed to nodes managed by this chart automatically.
+  2. Disable TLS encryption for REST requests from clients to our Elasticseach server. Because all of the client components in this lab such as Logstash and Kibana are installed within the same cluster with the Elasticsearch server, the communication between them and Elasticsearch can be HTTP. For other use cases, such as client applications communicate with the Elasticsearch server over the Internet, TLS encryption must be required.
+  3. These are options for the `master` node. We will install one `master` node with 5Gi of storage.. Other options are Kubernetes resource request and limitation.
+  4. These are options for the `data` node. We will install 2 `data` nodes, each has 5Gi of storage. Other options are Kubernetes resource request and limitation.
+  5. Disabled creation of `ingest` node.
+  6. Disabled creation of `coordinating` node.
+
+Now, let's apply our value file:
+```bash
+helm install lab-elasticsearch bitnami/elasticsearch --values values-elasticsearch.yaml --namespace observability
+```
+
+References:
+  - [Source repository](https://github.com/bitnami/charts/tree/main/bitnami/elasticsearch)
+  - [ArtifactHub](https://artifacthub.io/packages/helm/bitnami/elasticsearch)
 
 ### Set up Kibana
-- Set up Kibana
+We just have Elasticsearch deployed, let's install Kibana as a front-end of the Elasticsearch using the [values-kibana.yaml](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/values-kibana.yaml) file:
+
+```yaml
+kibana:
+  resources:                                              # [1]
+    requests:
+      cpu: 1
+      memory: 512Mi
+    limits:
+      cpu: 2
+      memory: 1024Mi
+  # tls:
+  #   enabled: false
+  elasticsearch:
+    hosts:
+      - elasticsearch.observability.svc.cluster.local     # [2]
+    port: 9200                                            # [3]
+    security:                                             # [4]
+      auth:
+        enabled: true
+        elasticsearchPasswordSecret: elasticsearch-admin
+```
+
+Let's review our configurations:
+  1. Specify compute resources for our Kibana instance.
+  2. Specify our Elasticsearch host name. As we are deploying the Elastic stack within the same cluster, the host name is the fully qualified domain name or [FQDN](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/values-elasticsearch.yaml) of the Elasticsearch Service.
+  3. Port number that the Elasticsearch listens for incoming requests. With the installation of Elasticsearch above, this is `9200` by default.
+  4. Configure security options when Kibana communicates with Elasticsearch. Here we are telling Kibana that Elasticsearch has enabled the security plugin, which requires any clients to have a username and password to communicate. Then we provide the password Secret object `elasticsearch-admin` so that Kibana can use it as the credential to talk to Elasticsearch.
+
+Install our Kibana:
+```bash
+helm install lab-kibana bitnami/kibana --values values-kibana.yaml --namespace observability
+```
 
 ### Set up Fluent Bit
 - Set up Fluent Bit
