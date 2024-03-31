@@ -61,7 +61,7 @@ Readers should be familiar with the following knowledge:
 
 
 - [Fluent Bit](https://docs.fluentbit.io/manual): A lightweight yet performance telemetry agent. In our architecture, Fluent Bit acts as a log collector and is deployed on every node to gather logs from running containers.
-- [Logstash](https://www.elastic.co/guide/en/logstash/current/introduction.html): A data collector that accepts input from a variety of sources, and a powerful data processing pipeline with multiple filter plugins. In our architecture, Logstash accepts raw log output from Fluent Bit, transform the log into a structured format and then publish to Elasticsearch.
+- [Logstash](https://www.elastic.co/guide/en/logstash/current/introduction.html): A data aggregator that accepts input from a variety of sources, and a powerful data processing pipeline with multiple filter plugins. In our architecture, Logstash accepts log output from Fluent Bit, transform the log into a structured format and then publish to Elasticsearch.
 - [Elastic Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html): The heart of the Elastic stack. Elasticsearch is used to centralize, index, manage all the log and their lifecycles. By providing APIs, Elasticsearch allows developers to interact, search, and analyse the logs.
 - [Kibana](https://www.elastic.co/guide/en/kibana/current/index.html): Not everyone loves to interact via APIs. In our architecture, Kibana provides a central place for anyone who needs access to Elasticsearch along with intuitive dashboards and customization options. 
 
@@ -262,11 +262,11 @@ Here we are, our Kibana:
 <img alt="kibana-home" src="../assets/img/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/kibana-home.png">
 
 
+### Set up Logstash
+We now have a frontend (Kibana) and a backend associated with a database (Elasticsearch) onboarded.
+
 ### Set up Fluent Bit
 - Set up Fluent Bit
-
-### Set up Logstash
-- Set up Logstash
 
 ## Analysis: Pros and Cons
 - About pros
