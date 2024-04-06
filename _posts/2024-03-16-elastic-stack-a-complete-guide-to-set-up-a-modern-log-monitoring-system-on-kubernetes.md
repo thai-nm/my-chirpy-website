@@ -263,7 +263,7 @@ Here we are, our Kibana:
 
 
 ### Set up Logstash
-We now have a frontend (Kibana) and a backend associated with a database (Elasticsearch) onboarded.
+We now have a frontend (Kibana) and a backend associated with a database (Elasticsearch) onboarded. Since Fluent Bit need a destination to forward collected data, we will next set up Logstash that accepts data from Fluent Bit and ingests into Elasticsearch. The value file [values-logstash.yaml](https://github.com/thai-nm/my-chirpy-website-resources/blob/main/2024-03-16-elastic-stack-a-complete-guide-to-set-up-a-modern-log-monitoring-system-on-kubernetes/values-kibana.yaml) will be used to do that:
 
 ### Set up Fluent Bit
 - Set up Fluent Bit
