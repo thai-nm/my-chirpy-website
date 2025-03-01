@@ -6,11 +6,11 @@ lang: en
 timezone: Asia/Saigon
 
 title: Ops Station
-tagline: A personal blog of a DevOps/SRE/Cloud Engineer.
+tagline: A personal blog of a DevOps Engineer.
 description: >-
   A personal blog about DevOps, Site Reliability Engineering and Cloud.
 
-url: "https://thainm.site"
+url: "https://thainm.me"
 
 github:
   username: thai-nm

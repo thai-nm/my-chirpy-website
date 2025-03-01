@@ -17,19 +17,18 @@ Hi guys! I'm a computer guy trying my best to discover the technology world, and
 <img align="right" alt="img" src="assets/img/its-devops.png" width="500px" height="300px" />
 
 
-#### 🌱 Things I am currently working on: 
-- Finding who I am!!
-- Work so hard as a DevOps Engineer in FPT Software
-- Develop simple tools to simplify my work life and contribute to open-source projects!
-- Discover new hobbies: philosophy, psychology, films, games, baseball, football, and magician!
+#### 🌱 Things I am currently working on:
+- Finding who I am!
+- Work so hard as a DevOps Engineer at playSTUDIOS Vietnam
+- Develop simple tools to simplify my work life!
+- Discover new hobbies: philosophy, psychology, films, games, football, magician, and photograph!
 
 #### 💪 Things I am challenging myself with:
-- Form a book-reading habit
 - Understand more about finance, money, and investment
 - Develop a blog website for myself
-- Get some DevOps-related certificates: Certified Kubernetes Administrator (Gotcha!), GCP Cloud Associate Engineer (And I got this as well!)
+- Deep dive into DevOps advanced knowledge: networking, containerization, and security
 
-#### 🧰 My favorite tools and services: 
+#### 🧰 My favorite tools and services:
 
 [![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,kubernetes,docker,linux,prometheus,ansible,jenkins,githubactions,gitlab,nginx,django,python,golang,bash&perline=8)](https://skillicons.dev)
 
