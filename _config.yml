@@ -2,15 +2,15 @@
 
 # Import the theme
 theme: jekyll-theme-chirpy
-lang: en
+lang: vn
 timezone: Asia/Saigon
 
-title: Ops Station
-tagline: A personal blog of a DevOps Engineer.
+title: Thai's Station
+tagline: Blog cá nhân của một DevOps Engineer.
 description: >-
-  A personal blog about DevOps, Site Reliability Engineering and Cloud.
+  Blog cá nhân về mình, DevOps, SRE và Cloud :D
 
-url: "https://thainm.me"
+url: "https://blog.thainm.me"
 
 github:
   username: thai-nm
