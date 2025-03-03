@@ -2,11 +2,11 @@
 
 # Import the theme
 theme: jekyll-theme-chirpy
-lang: vn
+lang: vi
 timezone: Asia/Saigon
 
 title: Thai's Station
-tagline: Blog cá nhân của một DevOps Engineer.
+tagline: Về DevOps, SRE, Cloud, System architect, và tui.
 description: >-
   Blog cá nhân về mình, DevOps, SRE và Cloud :D
 
@@ -44,7 +44,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/avatar.jpg
+avatar: assets/img/my-icon.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
