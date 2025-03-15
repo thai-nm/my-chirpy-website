@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  blog:
+    build: .
+    container_name: blog
+    working_dir: /blog
+    volumes:
+      - .:/blog
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll serve --watch --incremental --force_polling --host 0.0.0.0
