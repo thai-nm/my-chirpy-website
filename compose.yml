@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  blog:
+    build: .
+    container_name: blog
+    working_dir: /blog
+    environment:
+      - BUNDLE_PATH=/usr/local/bundle
+    volumes:
+      - .:/blog
+      - bundle_cache:/usr/local/bundle  # Persist gem installs
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll s
+
+volumes:
+  bundle_cache:
