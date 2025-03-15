@@ -1,8 +1,8 @@
-FROM ruby:3.2.7-bookworm
+FROM ruby:3.4.2-bookworm
 
 WORKDIR /blog
 
-COPY Gemfile Gemfile.lock .
+COPY Gemfile .
 
 RUN bundle install
 
