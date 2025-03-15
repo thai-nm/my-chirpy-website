@@ -32,9 +32,34 @@ DevOps engineer là những người:
 
     Ví dụ: Team QA cần service `user-management-service` trên môi trường `QA` để chạy test. Sử dụng các CI/CD platform như [Jenkins](https://www.jenkins.io/) hay [GitHub Actions](https://github.com/features/actions), QA engineer chỉ việc chọn service cần triển khai và ấn nút `Deploy`, đợi vài phút (thường là vậy 😁) cho pipeline chạy xong là sẽ có service `user-management-service` trên môi trường `QA` để cả team tha hồ test. Các pipeline để tự động hoá việc triển khai này không tự dưng có, mà sẽ được team DevOps phát triển.
 
+    ![img-jenkins-cicd-pipeline](../assets/posts/2025-03-02-about-devops/img/sample-jenkins-cicd-pipeline.png)
+
 - __Quản lý cơ sở hạ tầng__: Như đã đề cập ở trên, mỗi dự án sẽ có nhiều môi trường. DevOps là những người tạo/cập nhật/xoá cơ sở hạ tầng như server, database trên các môi trường. Nếu mỗi môi trường lại phải quản lý thủ công thì sẽ mất rất nhiều thời gian (và chán), đồng thời tiềm ẩn nhiều rủi ro, xoá nhầm hay cấu hình sai một database chẳng hạn. Lúc này, tự động hoá việc thao tác với hệ thống là rất cần thiết, và ta có [Terraform](https://www.terraform.io/) được sử dụng rộng rãi, giúp ta cấu hình server, database hay cơ sở hạ tầng nói chung thông qua code.
 
+    Dưới đây là một đoạn code Terraform để tạo một VM (virtual machine) trên AWS:
+    ```terraform
+    provider "aws" {
+        region = "us-east-1"
+    }
+
+    resource "aws_instance" "terraform_vm" {
+        ami           = "ami-0c55b159cbfafe1f0"
+        instance_type = "t2.micro" 
+
+        tags = {
+            Name = "Terraform-VM"
+        }
+    }
+
+    output "instance_ip" {
+        description = "Public IP of the  instance"
+        value       = aws_instance.terraform_vm.public_ip
+    }
+    ```
+
 - __Giám sát và khắc phục sự cố hệ thống__: Giả sử ứng dụng của mình đột nhiên được biết đến rộng rãi, nhà nhà người người tải xuống và dùng khiến lượng request tăng cao đột biến, mình cần phải tăng CPU/memory cho database để có thể chịu tải được. Để nhận biết được điều này sớm, cần có những phương án hay công cụ để theo dõi được tình trạng hệ thống ứng dụng, và mình có thể tìm tới combo ngon bổ miễn phí [Prometheus](https://prometheus.io/) kết hợp với [Grafana](https://grafana.com/). Tất nhiên, cái này DevOps làm nốt 😁.
+
+    ![img-grafana-dashboard](../assets/posts/2025-03-02-about-devops/img/sample-grafana-dashboard.png)
 
 Vậy cụ thể hơn, công việc hàng ngày của DevOps engineer sẽ có gì?
 
