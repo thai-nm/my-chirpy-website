@@ -9,7 +9,7 @@ tags: [tản mạn]
 ## Giới thiệu
 Chào các bạn, đây là bài viết đầu tiên của mình về DevOps :D
 
-Mình đã vô cùng đắn đo khi chọn ý tưởng cho bài viết mở đầu này. Sau một hồi nghĩ tới nghĩ lui, mình đã quyết định chọn mở bát với chủ đề là một câu hỏi, có lẽ đã xuất hiện trong đầu của bất cứ ai theo đuổi vị trí này: `DevOps là gì?`
+Sau một hồi đắn đo trong việc lên ý tưởng cho bài viết này, mình quyết định chọn cách trả lời cho một câu hỏi, có lẽ đã xuất hiện trong đầu của bất cứ ai theo đuổi vị trí này: `DevOps là gì?`
 
 ![img-its-devops](../assets/posts/2025-03-02-about-devops/img/its-devops.png)
 
