@@ -19,16 +19,14 @@ Bài viết được trình bày dưới góc nhìn chủ quan của mình, vớ
 Mục đích của bài viết:
 
 - Chia sẻ quan điểm tới cộng đồng.
-- Dành cho các bạn quan tâm và muốn tìm hiểu về DevOps: Mình mới ra trường chưa lâu, và mình muốn nhân lúc còn nhớ những băn khoăn, thắc mắc khi lơ mơ nghe tới DevOps, mình có thể chia sẻ tới các bạn (đặc biệt là sinh viên), mong rằng có thể phần nào giúp các bạn hiểu rõ hơn.  
+- Dành cho các bạn quan tâm và muốn tìm hiểu về DevOps: Mình mới ra trường chưa lâu, và nhân lúc còn nhớ những băn khoăn, thắc mắc khi lần đầu nghe tới DevOps, mình có thể chia sẻ tới các bạn (đặc biệt là sinh viên), mong rằng có thể phần nào giúp các bạn hiểu rõ hơn.  
 - Viết cho mình trong tương lai. Mình khá tò mò không biết vài năm nữa góc nhìn của mình liệu có thay đổi gì hay không 😃
-
-Lan man thế đủ rồi, vào vấn đề thoi 😃 
 
 ## DevOps là gì?
 
-Trong quy trình phát triển phần mềm, bằng việc liên tục đưa ra các bản cập nhật mới với từng thay đổi nhỏ của ứng dụng thay vì lên kế hoạch với timeline dài dằng dặc cùng nhiều thay đổi lớn, đội ngũ phát triển sẽ nhận được phản hồi từ phía khách hàng/người dùng sớm hơn, đồng nghĩa với việc sớm có kế hoạch thay đổi code hoặc đưa ra các bản vá lỗi/cải tiến. Ngoài ra, các thay đổi nhỏ nếu có gây ra lỗi thường sẽ dễ xử lý hơn các thay đổi lớn. Để đáp ứng được việc liên tục đưa ra các bản cập nhật mới như vậy, ta cần một cách thức nào đó giúp __giảm thời gian__ đưa sản phẩm tới tay người dùng mà vẫn __giữ được chất lượng tốt__, và ta có: __DevOps__.
+Trong phát triển phần mềm, việc liên tục đưa ra các bản cập nhật với từng thay đổi nhỏ giúp nhận phản hồi từ khách hàng sớm hơn. Điều này cho phép điều chỉnh code kịp thời và giảm rủi ro khi triển khai. Ngoài ra, các thay đổi nhỏ nếu có gây ra lỗi thường sẽ dễ xử lý hơn các thay đổi lớn. Để đáp ứng được việc liên tục đưa ra các bản cập nhật như vậy, ta cần một cách thức nào đó giúp __giảm thời gian__ đưa sản phẩm tới tay người dùng mà vẫn __giữ được chất lượng tốt__, và ta có: __DevOps__.
 
-Khi tra định nghĩa DevOps trên Google, rất có thể các bạn đã bắt gặp định nghĩa kiểu như: "DevOps là một văn hoá/phương thức/nguyên lý ...". Các định nghĩa này theo mình đều đúng, nhưng trừu tượng và khó hình dung cho người đọc, đặc biệt với những người mới tìm hiểu về DevOps. Trong bài viết này, mình đưa ra định nghĩa của mình về DevOps engineer, điều mà mình cho là thực tế và rõ ràng hơn. 
+Khi tra định nghĩa DevOps trên Google, rất có thể các bạn đã bắt gặp định nghĩa kiểu như: "DevOps là một văn hoá/phương thức/nguyên lý ...". Các định nghĩa này theo mình đều đúng, nhưng trừu tượng và khó hình dung cho người đọc, đặc biệt với những người mới tìm hiểu về DevOps. Trong bài viết này, mình đưa ra định nghĩa của mình về DevOps engineer, điều mà mình cho là thực tế và rõ ràng hơn.
 
 DevOps engineer là những người:
 
@@ -38,7 +36,7 @@ DevOps engineer là những người:
 
     ![img-jenkins-cicd-pipeline](../assets/posts/2025-03-02-about-devops/img/sample-jenkins-cicd-pipeline.png) <em>Một CI/CD pipeline trên Jenkins</em>
 
-- __Quản lý cơ sở hạ tầng (infrastructure)__: Như đã đề cập ở trên, mỗi dự án sẽ có nhiều môi trường. DevOps là những người tạo/cập nhật/xoá infrastructure như máy chủ (server), database trên các môi trường. Nếu mỗi môi trường lại phải quản lý thủ công thì sẽ mất rất nhiều thời gian (và chán), đồng thời tiềm ẩn nhiều rủi ro, xoá nhầm hay cấu hình sai một database chẳng hạn. Lúc này, tự động hoá việc thao tác với hệ thống là rất cần thiết, và ta có [Terraform](https://www.terraform.io/) được sử dụng rộng rãi, giúp ta cấu hình server, database hay infrastructure nói chung thông qua code.
+- __Quản lý cơ sở hạ tầng (infrastructure)__: Như đã đề cập ở trên, mỗi dự án sẽ có nhiều môi trường. DevOps là những người tạo/cập nhật/xoá infrastructure như máy chủ (server), database trên các môi trường. Nếu mỗi môi trường lại phải quản lý thủ công thì sẽ mất rất nhiều thời gian (và nhàm chán), đồng thời tiềm ẩn nhiều rủi ro, xoá nhầm hay cấu hình sai một database chẳng hạn. Lúc này, tự động hoá tương tác với hệ thống là rất cần thiết, và ta có [Terraform](https://www.terraform.io/) được sử dụng rộng rãi, giúp ta cấu hình server, database hay infrastructure nói chung thông qua code.
 
     Dưới đây là một đoạn code Terraform để tạo một VM (virtual machine) trên AWS:
 
@@ -81,10 +79,10 @@ Và còn làm việc với rất nhiều vị trí khác nữa.
 
 Bắt nguồn từ những trách nhiệm kể trên, một ngày làm DevOps engineer của mình thường gồm những đầu việc như:
 
-- Theo dõi hệ thống và xử lý sự cố: team dev không gọi được API của service A trên môi trường `staging` do lỗi hệ thống mạng; ứng dụng bị crash liên tục do không kết nối được tới database, ...
-- Phát triển pipeline để tự động hoá và tích hợp thêm chức năng mới: Thêm bước lưu kết quả các test case thành file `.zip` và cho phép tải về; thêm bước yêu cầu xác nhận thủ công của sếp trước khi deploy lên môi trường `production`; ...
-- Bảo trì hệ thống và nâng cao bảo mật: nâng version của Jenkins server lên bản mới nhất để nhận những bản vá bảo mật (security patch) mới nhất; chuyển từ cấp toàn bộ quyền cho một người thành chỉ cấp những quyền cần thiết, thiếu thì yêu cầu xin thêm; ...
-- Quản lý infrastructure: Tạo một database cho môi trường dev; tự động tắt server ngoài giờ làm việc để giảm chi phí; ...
+- __Theo dõi hệ thống và xử lý sự cố__: team dev không gọi được API của service A trên môi trường `staging` do lỗi hệ thống mạng; ứng dụng bị crash liên tục do không kết nối được tới database, ...
+- __Phát triển pipeline để tự động hoá và tích hợp thêm chức năng mới__: Thêm bước lưu kết quả các test case thành file `.zip` và cho phép tải xuống; thêm bước yêu cầu xác nhận thủ công của sếp trước khi deploy lên môi trường `production`; ...
+- __Bảo trì hệ thống và nâng cao bảo mật__: nâng version của Jenkins server lên bản mới nhất để nhận những bản vá bảo mật (security patch) mới nhất; chuyển từ cấp toàn bộ quyền cho một người thành chỉ cấp những quyền cần thiết, thiếu thì yêu cầu xin thêm; ...
+- __Quản lý infrastructure__: Tạo một database cho môi trường dev; tự động tắt server ngoài giờ làm việc để giảm chi phí; ...
 - ...
 
 Các bạn có thể tham khảo thêm các job description (JD) trên mạng để nắm được về yêu cầu và công việc của DevOps engineer, ví dụ như [đây](https://business.linkedin.com/talent-solutions/resources/how-to-hire-guides/devops-engineer/job-description) là một JD mẫu trên Linkedin.
@@ -103,7 +101,7 @@ Các bạn có thể tham khảo thêm các job description (JD) trên mạng đ
 
 - __Thu nhập__: Lương của DevOps được đánh giá là mức lương cao trong ngành IT, theo khảo sát của ITviec.
 - __Cơ hội phát triển đa dạng__: DevOps có thể phát triển theo nhiều hướng khác nhau như Cloud Architecture, Site Reliability Engineering (SRE), Platform Engineering,...
-- __Công nghệ đa dạng__: Được tiếp xúc với nhiều công nghệ mới và làm việc với nhiều đội nhóm khác nhau, giúp tích lũy kinh nghiệm đa dạng và đỡ chán.
+- __Công nghệ đa dạng__: Được tiếp xúc với nhiều công nghệ mới và làm việc với nhiều đội nhóm khác nhau, giúp tích lũy kinh nghiệm đa dạng và đỡ  cảm thấy nhàm chán.
 
 ## FAQ
 
