@@ -19,12 +19,12 @@ github:
 #   username: twitter_username
 
 social:
-  name: Thai Nguyen Minh
+  name: Thai Nguyen
   email: thainm.uet@gmail.com
   links:
-    - https://www.linkedin.com/in/thainm-uet
+    - https://www.linkedin.com/in/thai-nm
     - https://github.com/thai-nm
-    - https://www.facebook.com/thainm.uet
+    - https://www.facebook.com/thainm.me
 
 # Need to update this
 google_site_verification: "mysiteverificationstring"
