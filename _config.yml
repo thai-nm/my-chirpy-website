@@ -6,7 +6,7 @@ lang: vi
 timezone: Asia/Saigon
 
 title: Thai's Station
-tagline: Về DevOps, SRE, Cloud, System architect, và tui.
+tagline: Về DevOps, SRE, Cloud, System Architect, và tui.
 description: >-
   Blog cá nhân về mình, DevOps, SRE và Cloud :D
 
@@ -44,7 +44,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/my-icon.png
+avatar: assets/img/favicons/favicon.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
